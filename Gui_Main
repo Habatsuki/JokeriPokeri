@@ -361,7 +361,6 @@ public class Gui_Main extends JFrame {
             
             //[VOITONMAKSU]
             private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-                System.out.println("toimii voitonmaksu");
                 if (rayPelikone.getiPelivaihe() == 1) {
                     //Maksa voitot kolikoina
                     rayPelikone.VoitotRahamaaraan();
@@ -532,13 +531,13 @@ public class Gui_Main extends JFrame {
                         rayPelikone.setiPelivaihe(1);
                     } else {
                         //HÄVIÖ
+                        rayPelikone.LaskeVoitot(0);
                         //Jatka vaiheeseen [1.]
                         rayPelikone.setiPelivaihe(1);
                     }
                 } else {
                     //Älä tee mitään
                 }
-                System.out.println("toimii Suuri");
             }
         });
 
@@ -568,13 +567,13 @@ public class Gui_Main extends JFrame {
                         rayPelikone.setiPelivaihe(1);
                     } else {
                         //HÄVIÖ
+                        rayPelikone.LaskeVoitot(0);
                         //Jatka vaiheeseen [1.]
                         rayPelikone.setiPelivaihe(1);
                     }
                 } else {
                     //Älä tee mitään
                 }
-                System.out.println("toimii Pieni");
             }
         });
 
