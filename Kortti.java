@@ -165,5 +165,5 @@ public class Kortti {
         //System.out.println(sTiedostoNimi);
         
         return sTiedostoNimi ;   
-    }     
+    }
 }
