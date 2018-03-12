@@ -4,26 +4,20 @@ Projektin tarkoituksen on simuloida peliautomaateilta löytyvä Jokeripokeri pel
 
 Peliin kuuluu kaikki pelin ominaisuudet kuten korttien nostaminen, voitontarkistus, voittojen tuplaaminen. Pelin pystyisi tehdä kokonaan tekstinä, mutta yritämme saada peliin visuaalisen puolen.
 
-ToDo luokat:
+ToDo ominaisuudet
 
--GUI_Main.java (Jari)
+-Ohjetekstit (esim. "Voitit 0.20 haluatko tuplata" ja "Valitse PIENI tai SUURI")
 
--Voitontarkistus.java (Juho)
+Optional:
 
--Tuplaus.java (Hannu)
+*Pelitulosten merkitseminen lokiin
 
--KorttiKasittely.java (Hannu)
+*Painikkeiden lukitseminen/lukituksen poistaminen eri pelitilanteissa
 
--Kortti.java (Valmis)
+*Potentiaalisten voittojen näyttäminen pelaajalle
 
--Loki.java (Valmis)
+*Taustamusiikki and/or Tuplausmusiikki
 
--Pelikone.java (Valmis)
+*Ääniefektit
 
-ToDo funktiot:
-
--Tarkistus että edes yksi kortti on lukittu
-
--Yleinen koodi kortin lukitsemiseen
-
--Koodi joka poistaa lukituksen kaikista korteista
+*Toimiva pause korttien jakamiseen (HANKALA ONGELMA!)
