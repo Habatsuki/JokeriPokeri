@@ -1,9 +1,10 @@
 package oliot_projekti;
+
 import java.util.*;
 
 public class VoitonTarkistus {
-    
-    public String LukitseVoitot(ArrayList<Kortti> kasi){
+    //Kirjoittaa palautettavan tekstipätkän josta selviää voiton tyyppi ja voittavat kortit
+    public static String LukitseVoitot(ArrayList<Kortti> kasi){
         //tehdään kaksiuloitteinen taulukko johon korttien arvot saa helposti luettavaksi sisälle
         Integer[][] kortit = new Integer[5][3];
         
@@ -261,6 +262,41 @@ public class VoitonTarkistus {
         }
         return vkortit;
     }
-            
-
+    
+    //Pelataan tuplaus kierros ja palautetaan tuplauksen tulos
+    //2 = Voitto, 1 = Tasapeli, 0 = Häviö
+    public static int Tuplaus(int iTuplausValinta, ArrayList<Kortti> kortitPakka, ArrayList<Kortti> kortitKasi) {
+        //Nosta kortti ensimmäiseen positioon
+        KorttiKasittely.NostaKortti(kortitPakka, kortitKasi, 0);
+        
+        int iKorttiArvo = kortitKasi.get(0).getiKortinArvo();
+        int iKorttiMaa = kortitKasi.get(0).getiKortinMaa();
+        
+        //iTuplausValinta
+            //0 = [PIENI] painiketta painettu
+            //1 = [SUURI] painiketta painettu
+        
+        //Jokeri voittaa aina
+        if (iKorttiArvo == 0) {
+            //2 = Voitto
+            return 2;
+        //Voitto jos painettu [PIENI] painiketta
+        } else if (iTuplausValinta == 0 && iKorttiArvo < 7) {
+            //2 = Voitto
+            return 2;
+        //Voitto jos painettu [SUURI] painiketta
+        } else if (iTuplausValinta == 1 && iKorttiArvo > 7) {
+            //2 = Voitto
+            return 2;
+        //Tasapeli jos punainen 7
+        } else if (iKorttiArvo == 7 && iKorttiMaa <= 2) {
+            //1 = tasapeli
+            return 1;
+        //Kortin koko on väärä tai musta seitsemän
+        } else {
+            //0 = häviö
+            return 0;
+        }
+    }
+    
 }
