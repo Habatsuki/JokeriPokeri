@@ -4,9 +4,13 @@ Projektin tarkoituksen on simuloida peliautomaateilta löytyvä Jokeripokeri pel
 
 Peliin kuuluu kaikki pelin ominaisuudet kuten korttien nostaminen, voitontarkistus, voittojen tuplaaminen. Pelin pystyisi tehdä kokonaan tekstinä, mutta yritämme saada peliin visuaalisen puolen.
 
-ToDo ominaisuudet
+ToDo:
 
 -Ohjetekstit (esim. "Voitit 0.20 haluatko tuplata" ja "Valitse PIENI tai SUURI")
+
+-Panoksen automaattinen asettaminen uudestaan kun rahat eivät riitä nykyiseen panokseen
+
+-Pelin päättyminen kun rahat päättyy
 
 Optional:
 
