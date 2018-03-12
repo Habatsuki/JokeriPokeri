@@ -63,6 +63,28 @@ public class Gui_Main extends JFrame {
          * (light_grey)
          */
 //</editor-fold>
+
+//ON EXIT KOODI
+//        //Koodi jota kutsutaan sulkeutuessa
+//        Runtime.getRuntime().addShutdownHook(new Thread()
+//        {
+//            @Override
+//            public void run() {
+//                //Lue lokitiedostosta arvo
+//                double dTallennettuRaha;
+//                //Lue edellinen rahamäärä
+//                dTallennettuRaha = Loki.LueRahamaara();
+//                //Voitit 10 €
+//                dTallennettuRaha = dTallennettuRaha + 10;
+//                try {
+//                    //Kirjoita uusi rahamäärä
+//                    Loki.TallennaRahamaara(dTallennettuRaha);
+//                } catch (IOException ex) {
+//                    Logger.getLogger(Gui_Main.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//        });
+
         jPanel1 = new JPanel();
         jPanel2 = new JPanel();
 
