@@ -714,6 +714,18 @@ public class Gui extends javax.swing.JFrame {
     //</editor-fold>
 
     public static void main(String args[]) {
+         
+         //musiikki pitää olla .wav
+          try {
+            AudioInputStream bgm = AudioSystem.getAudioInputStream(new File("src/Kuvat/popcorn.wav"));
+            Clip clip = AudioSystem.getClip();
+            clip.open(bgm);
+            clip.start();
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
