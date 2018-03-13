@@ -30,37 +30,12 @@ public class Pelikone {
             this.dPanos = dMinPanos;
         }
         //Kirjoita uusi panos
-        this.PaivitaArvot();
-    }
-    //Tarkista että rahat riittävät panokseen
-    public boolean TarkastaRiittaakoRahatPanokseen() {
-        //Rahat riittävät
-        if (this.dRahamaara >= this.dPanos) {
-            //Ei tarvitse tehdä mitään
-            return true;
-        //Rahaa on mutta se ei riitä nykyiseen panokseen
-        } else if (this.dRahamaara > 0) {
-            //Asetetaan suurin mahdollinen panos
-            this.dPanos = this.dRahamaara;
-            //Aseta uusi panos
-            //Gui_Main.jLab_18_PanosSumma.setText(String.valueOf(this.dPanos));
-            this.dRahamaara = this.dRahamaara - this.dPanos;
-            
-            return true;
-        //Rahat eivät riitä edes pienimpään panokseen
-        } else {
-            return false;
-        }
+        this.PaivitaLukukentat();
     }
     //Kutsu panoksen tarkistusta ennen tätä
     public void MaksaPanos() {
         this.dRahamaara = this.dRahamaara - this.dPanos;
-        this.PaivitaArvot();
-    }
-    //Voitot rahamäärään metodi
-    public void AsetaVoitotRahamaara(double dAsetettavaVoitto) {
-        this.dVoitot = dAsetettavaVoitto;
-        this.PaivitaArvot();
+        this.PaivitaLukukentat();
     }
     //Siirrä voitot pelikoneen rahamäärään
     public void VoitotRahamaaraan() {
@@ -70,7 +45,7 @@ public class Pelikone {
             this.dVoitot = 0;
         }
         //Päivitä voitot ja rahamäärät labeleihin
-        this.PaivitaArvot();
+        this.PaivitaLukukentat();
     }
     public void LaskeVoitot(int iVoittoTyyppi) {
         int iVoittokerroin = 0;
@@ -105,33 +80,31 @@ public class Pelikone {
         //Lasketaan todellinen voitto
         this.dVoitot = iVoittokerroin * this.dPanos;
         //Päivitetään arvot
-        this.PaivitaArvot();
+        this.PaivitaLukukentat();
     }
     //Tuplaa voitot
     public void TuplaaVoitot() {
         this.dVoitot = this.dVoitot * 2;
         //Päivitetään arvot
-        this.PaivitaArvot();
+        this.PaivitaLukukentat();
     }
     public int getiPelivaihe() {
         return iPelivaihe;
-    }
-    public double getdPanos() {
-        return dPanos;
-    }
-    public double getdVoitot() {
-        return dVoitot;
     }
     public void setiPelivaihe(int iAsetaVaihe) {
         this.iPelivaihe = iAsetaVaihe;
         
         //Tarkista onko pelikoneessa rahaa
-        if (this.dRahamaara == 0) {
+        if (this.dRahamaara <= 0) {
             this.iPelivaihe = 6;
         }
-            
+        
         //Aseta painikkeet lukituiksi
         if (this.iPelivaihe == 1) {
+            //Jos rahat eivät riitä panokseen aseta panos rahamäärän suuruiseksi
+            if (this.dRahamaara < this.dPanos) {
+                this.dPanos = this.dRahamaara;
+            }
             
             //Esim:
             //Gui_Main.jB2_Tuplaa.setEnabled(false);
@@ -141,7 +114,7 @@ public class Pelikone {
         } else if (this.iPelivaihe == 3) {
 
         } else if (this.iPelivaihe == 4) {
-
+            //Gui_Main.AsetaOhjeteksti("Valitse suuri tai pieni");
         } else if (this.iPelivaihe == 5) {
 
         } else {
@@ -149,11 +122,21 @@ public class Pelikone {
             //Lukitse painikkeet
             //Kiitä pelaamisesta
         }
+        this.PaivitaLukukentat();
     }
-    public void PaivitaArvot() {
+    public void PaivitaLukukentat() {
         String sArvo = String.format("%.2f", this.dPanos);
         String sVoitot = String.format("%.2f", this.dVoitot);
         String sRahamaara = String.format("%.2f", this.dRahamaara);
+        
+        Gui_Main.jLabel8.setText(String.format("%.2f", this.dPanos * 50) + " € Viitoset");
+        Gui_Main.jLabel9.setText(String.format("%.2f", this.dPanos * 30) + " € Värisuora");
+        Gui_Main.jLabel10.setText(String.format("%.2f", this.dPanos * 15) + " € Neloset");
+        Gui_Main.jLabel11.setText(String.format("%.2f", this.dPanos * 8) + " € Täyskäsi");
+        Gui_Main.jLabel12.setText(String.format("%.2f", this.dPanos * 4) + " € Väri");
+        Gui_Main.jLabel13.setText(String.format("%.2f", this.dPanos * 3) + " € Suora");
+        Gui_Main.jLabel14.setText(String.format("%.2f", this.dPanos * 2) + " € Kolmoset");
+        Gui_Main.jLabel15.setText(String.format("%.2f", this.dPanos * 2) + " € Kaksi Paria");
         
         Gui_Main.jLabel18.setText("  " + sArvo + " €");
         Gui_Main.jLabel16.setText("  " + sVoitot);
