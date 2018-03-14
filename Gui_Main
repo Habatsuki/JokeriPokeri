@@ -47,7 +47,1093 @@ public class Gui_Main extends JFrame {
          * jLabel13; Suora jLabel14; Kolmoset jLabel15;Kaksi Paria
          *
          * jLabel16; Voitot (Rahamaara) jLabel17; Tili (Rahamaara)
+         * jLabel18;Panos (Rahamaara)import java.util.*;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.ImageIcon;
+import java.io.*;
+import javax.sound.sampled.*;
+
+public class Gui_Main extends JFrame {
+
+    ArrayList<Kortti> kortitPakka = new ArrayList<>();
+    ArrayList<Kortti> kortitKasi = new ArrayList<>();
+    ArrayList<Kortti> kortitMuu = new ArrayList<>();
+
+    public Gui_Main() {
+        initComponents();
+        KorttiKasittely.LuoKorttipakka(kortitPakka);
+        //KorttiKasittely.NostaKasiTayteenKortteja(kortitPakka, kortitKasi);
+
+        //Otsikko ja koko jne.
+        setTitle("JokeriPokeri");
+        setVisible(true);
+        setSize(1250, 720);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(200, 100));
+        setResizable(false);
+
+    }
+
+    private void initComponents() {
+        //<editor-fold defaultstate="collapsed" desc="Labelien ja painikkeiden sanakirja">
+        /**
+         *
+         * jButton1; Voitonmaksu jButton2; Tuplaa jButton3; Panos jButton4; Jaa
+         * jButton5; Suuri (tuplaus) jButton6; Pieni (tuplaus)
+         *
+         * jCheckBox1; jCheckBox2; jCheckBox3; jCheckBox4; jCheckBox5;
+         *
+         * jLabel1; Kortti 1 jLabel2; Kortti 2 jLabel3; Kortti 3 jLabel4; Kortti
+         * 4 jLabel5; Kortti 5
+         *
+         * jLabel6; Tili: (teksti) jLabel7; Voitot: (teksti) jLabel8; Värisuora
+         * jLabel9; Viitoset jLabel10; Neloset jLabel11;Täyskäsi jLabel12; Väri
+         * jLabel13; Suora jLabel14; Kolmoset jLabel15;Kaksi Paria
+         *
+         * jLabel16; Voitot (Rahamaara) jLabel17; Tili (Rahamaara)
          * jLabel18;Panos (Rahamaara)
+         *
+         * jLabel19; LUKITTU/EI LUKITTU 1 jLabel20; LUKITTU/EI LUKITTU 2
+         * jLabel21; LUKITTU/EI LUKITTU 3 jLabel22; LUKITTU/EI LUKITTU 4
+         * jLabel23; LUKITTU/EI LUKITTU 5
+         *
+         * jPanel1; Korttien tausta (White) jPanel2; Painikkeiden tausta
+         * (light_grey)
+         */
+//</editor-fold>
+        jPanel1 = new JPanel();
+        jPanel2 = new JPanel();
+        jPanel2.setSize(1250, 350);
+//        jPanel2.setBackground(Color.DARK_GRAY);
+
+        jLabel1 = new JLabel();
+        jLabel1 = new JLabel();
+        jLabel1.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+
+            private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {
+                // TODO add your handling code here:
+                if (rayPelikone.getiPelivaihe() == 2) {
+                    try {
+                        AudioInputStream bgm = AudioSystem.getAudioInputStream(new File("src/sound/click_lock.wav"));
+                        Clip clip = AudioSystem.getClip();
+                        clip.open(bgm);
+                        clip.start();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    Funktiot.KorttiVaihdaLukitusta(jCheckBox1, kortitKasi);
+                }
+            }
+        });
+
+        jLabel2 = new JLabel();
+        jLabel2.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+
+            private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {
+                // TODO add your handling code here:
+                if (rayPelikone.getiPelivaihe() == 2) {
+                    try {
+                        AudioInputStream bgm = AudioSystem.getAudioInputStream(new File("src/sound/click_lock.wav"));
+                        Clip clip = AudioSystem.getClip();
+                        clip.open(bgm);
+                        clip.start();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    Funktiot.KorttiVaihdaLukitusta(jCheckBox2, kortitKasi);
+                }
+            }
+        });
+
+        jLabel3 = new JLabel();
+        jLabel3.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+
+            private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {
+                // TODO add your handling code here:
+                if (rayPelikone.getiPelivaihe() == 2) {
+                    try {
+                        AudioInputStream bgm = AudioSystem.getAudioInputStream(new File("src/sound/click_lock.wav"));
+                        Clip clip = AudioSystem.getClip();
+                        clip.open(bgm);
+                        clip.start();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    Funktiot.KorttiVaihdaLukitusta(jCheckBox3, kortitKasi);
+                }
+            }
+        });
+
+        jLabel4 = new JLabel();
+        jLabel4.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+
+            private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {
+                // TODO add your handling code here:
+                if (rayPelikone.getiPelivaihe() == 2) {
+                    try {
+                        AudioInputStream bgm = AudioSystem.getAudioInputStream(new File("src/sound/click_lock.wav"));
+                        Clip clip = AudioSystem.getClip();
+                        clip.open(bgm);
+                        clip.start();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    Funktiot.KorttiVaihdaLukitusta(jCheckBox4, kortitKasi);
+                }
+            }
+        });
+
+        jLabel5 = new JLabel();
+        jLabel5.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+
+            private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {
+                // TODO add your handling code here:
+                if (rayPelikone.getiPelivaihe() == 2) {
+                    try {
+                        AudioInputStream bgm = AudioSystem.getAudioInputStream(new File("src/sound/click_lock.wav"));
+                        Clip clip = AudioSystem.getClip();
+                        clip.open(bgm);
+                        clip.start();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    Funktiot.KorttiVaihdaLukitusta(jCheckBox5, kortitKasi);
+                }
+            }
+        });
+
+        jLabel6 = new JLabel();
+        jLabel6.setText("Tili:");
+        jLabel7 = new JLabel();
+        jLabel8 = new JLabel();
+        jLabel9 = new JLabel();
+        jLabel10 = new JLabel();
+        jLabel11 = new JLabel();
+        jLabel12 = new JLabel();
+        jLabel13 = new JLabel();
+        jLabel14 = new JLabel();
+        jLabel15 = new JLabel();
+        jLabel16 = new JLabel();
+        jLabel17 = new JLabel();
+        jLabel18 = new JLabel();
+        jLabel19 = new JLabel();
+        jLabel19.setIcon(new ImageIcon(getClass().getResource("/Kuvat/unlock.png")));
+        jLabel20 = new JLabel();
+        jLabel20.setIcon(new ImageIcon(getClass().getResource("/Kuvat/unlock.png")));
+        jLabel21 = new JLabel();
+        jLabel21.setIcon(new ImageIcon(getClass().getResource("/Kuvat/unlock.png")));
+        jLabel22 = new JLabel();
+        jLabel22.setIcon(new ImageIcon(getClass().getResource("/Kuvat/unlock.png")));
+        jLabel23 = new JLabel();
+        jLabel23.setIcon(new ImageIcon(getClass().getResource("/Kuvat/unlock.png")));
+
+        JLabel jLabel24 = new JLabel();
+        jLabel24.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel24.setFont(new Font("Helvetica", Font.BOLD, 35));
+        jLabel24.setForeground(Color.red);
+        jLabel24.setVisible(true);
+        jLabel24.setText("Aseta Panos ja Jaa kortit");
+
+        jLabel18.add(jLabel24);
+
+        jButton1 = new JButton();
+        jButton2 = new JButton();
+        jButton3 = new JButton();
+        jButton4 = new JButton();
+        jButton5 = new JButton();
+        jButton6 = new JButton();
+
+        jCheckBox1 = new JCheckBox();
+        jCheckBox2 = new JCheckBox();
+        jCheckBox3 = new JCheckBox();
+        jCheckBox4 = new JCheckBox();
+        jCheckBox5 = new JCheckBox();
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1250, 336));
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setIcon(new ImageIcon(getClass().getResource("/Kuvat/cardback.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jLabel1.setToolTipText("");
+        jLabel1.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setIcon(new ImageIcon(getClass().getResource("/Kuvat/cardback.png"))); // NOI18N
+        jLabel2.setText("jLabel1");
+        jLabel2.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setIcon(new ImageIcon(getClass().getResource("/Kuvat/cardback.png"))); // NOI18N
+        jLabel3.setText("jLabel1");
+        jLabel3.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setIcon(new ImageIcon(getClass().getResource("/Kuvat/cardback.png"))); // NOI18N
+        jLabel4.setText("jLabel1");
+        jLabel4.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setIcon(new ImageIcon(getClass().getResource("/Kuvat/cardback.png"))); // NOI18N
+        jLabel5.setText("jLabel1");
+        jLabel5.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        Pelikone pelikone;
+        pelikone = voittosumma;
+        pelikone.VoitotRahamaaraan();
+
+        jLabel7.setText("Voitot:");
+
+//        jLabel8.setText("30x Värisuora");
+        jLabel8.setOpaque(true);
+        jLabel8.setFont(new Font("Helvetica", Font.BOLD, 12));
+
+        jLabel8.setBorder(BorderFactory.createSoftBevelBorder(WIDTH, Color.black, Color.white, Color.black, Color.white));
+        jLabel8.setForeground(Color.black);
+        jLabel8.setBackground(Color.lightGray);
+
+        jLabel9.setOpaque(true);
+        jLabel9.setBorder(BorderFactory.createSoftBevelBorder(WIDTH, Color.black, Color.white, Color.black, Color.white));
+        jLabel9.setForeground(Color.black);
+        jLabel9.setBackground(Color.lightGray);
+
+        jLabel10.setOpaque(true);
+        jLabel10.setBorder(BorderFactory.createSoftBevelBorder(WIDTH, Color.black, Color.white, Color.black, Color.white));
+        jLabel10.setForeground(Color.black);
+        jLabel10.setBackground(Color.lightGray);
+
+        jLabel11.setOpaque(true);
+        jLabel11.setBorder(BorderFactory.createSoftBevelBorder(WIDTH, Color.black, Color.white, Color.black, Color.white));
+        jLabel11.setForeground(Color.black);
+        jLabel11.setBackground(Color.lightGray);
+
+        jLabel12.setOpaque(true);
+        jLabel12.setBorder(BorderFactory.createSoftBevelBorder(WIDTH, Color.black, Color.white, Color.black, Color.white));
+        jLabel12.setForeground(Color.black);
+        jLabel12.setBackground(Color.lightGray);
+
+        jLabel13.setOpaque(true);
+        jLabel13.setBorder(BorderFactory.createSoftBevelBorder(WIDTH, Color.black, Color.white, Color.black, Color.white));
+        jLabel13.setForeground(Color.black);
+        jLabel13.setBackground(Color.lightGray);
+
+        jLabel14.setOpaque(true);
+        jLabel14.setBorder(BorderFactory.createSoftBevelBorder(WIDTH, Color.black, Color.white, Color.black, Color.white));
+        jLabel14.setForeground(Color.black);
+        jLabel14.setBackground(Color.lightGray);
+
+        jLabel15.setOpaque(true);
+        jLabel15.setBorder(BorderFactory.createSoftBevelBorder(WIDTH, Color.black, Color.white, Color.black, Color.white));
+        jLabel15.setForeground(Color.black);
+        jLabel15.setBackground(Color.lightGray);
+
+        jLabel19.setVisible(true);
+        jLabel20.setVisible(true);
+        jLabel21.setVisible(true);
+        jLabel22.setVisible(true);
+        jLabel23.setVisible(true);
+
+        jCheckBox1.setVisible(false);
+        jCheckBox1.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    jLabel19.setIcon(new ImageIcon(getClass().getResource("/Kuvat/lock.png")));
+
+                } else {
+                    jLabel19.setIcon(new ImageIcon(getClass().getResource("/Kuvat/unlock.png")));
+                };
+            }
+        });
+
+        jCheckBox2.setActionCommand("jC_B_2");
+        jCheckBox2.setVisible(false);
+        jCheckBox2.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
+                    //do something...
+                    jLabel20.setIcon(new ImageIcon(getClass().getResource("/Kuvat/lock.png")));
+
+                } else {
+                    jLabel20.setIcon(new ImageIcon(getClass().getResource("/Kuvat/unlock.png")));
+                };
+            }
+        });
+        jCheckBox3.setActionCommand("jC_Box_3");
+        jCheckBox3.setVisible(false);
+        jCheckBox3.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
+                    //do something...
+                    jLabel21.setIcon(new ImageIcon(getClass().getResource("/Kuvat/lock.png")));
+                } else {//checkbox has been deselected
+                    jLabel21.setIcon(new ImageIcon(getClass().getResource("/Kuvat/unlock.png")));
+                };
+            }
+        });
+        jCheckBox4.setActionCommand("jC_Box_4");
+        jCheckBox4.setVisible(false);
+        jCheckBox4.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
+                    //do something...
+                    jLabel22.setIcon(new ImageIcon(getClass().getResource("/Kuvat/lock.png")));
+
+                } else {//checkbox has been deselected
+                    jLabel22.setIcon(new ImageIcon(getClass().getResource("/Kuvat/unlock.png")));
+                };
+            }
+        });
+        jCheckBox5.setActionCommand("jC_Box_5");
+        jCheckBox5.setVisible(false);
+        jCheckBox5.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
+                    //do something...
+                    jLabel23.setIcon(new ImageIcon(getClass().getResource("/Kuvat/lock.png")));
+                } else {//checkbox has been deselected
+                    jLabel23.setIcon(new ImageIcon(getClass().getResource("/Kuvat/unlock.png")));
+                };
+            }
+        });
+
+        jLabel16.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+//        jLabel24.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel17.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        pelikone = rayPelikone;
+        pelikone.NostaPanosta();
+//        jLabel17.setText("");
+        jLabel18.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 153));
+        jButton1.setText("Voitonmaksu");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+
+            }
+
+            //[VOITONMAKSU]
+            private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+
+                try {
+                    AudioInputStream bgm = AudioSystem.getAudioInputStream(new File("src/sound/click_1.wav"));
+                    Clip clip = AudioSystem.getClip();
+                    clip.open(bgm);
+                    clip.start();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                if (rayPelikone.getiPelivaihe() == 1) {
+                    jLabel24.setText("Aseta Panos ja Jaa kortit");
+
+//                    try {
+//                        AudioInputStream bgm = AudioSystem.getAudioInputStream(new File("src/sound/voitonmaksu.wav"));
+//                        Clip clip = AudioSystem.getClip();
+//                        clip.open(bgm);
+//                        clip.start();
+//
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+                    //Maksa voitot kolikoina
+                    rayPelikone.VoitotRahamaaraan();
+                } else if (rayPelikone.getiPelivaihe() == 3) {
+                    jLabel24.setText("Aseta Panos ja Jaa kortit");
+
+                    try {
+                        AudioInputStream bgm = AudioSystem.getAudioInputStream(new File("src/sound/voitonmaksu.wav"));
+                        Clip clip = AudioSystem.getClip();
+                        clip.open(bgm);
+                        clip.start();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    //Siirrä voitot rahamäärään
+                    rayPelikone.VoitotRahamaaraan();
+                    //Jatka vaiheeseen [1.]
+                    rayPelikone.setiPelivaihe(1);
+                } else if (rayPelikone.getiPelivaihe() == 5) {
+                    jLabel24.setText("Aseta Panos ja Jaa kortit");
+
+                    try {
+                        AudioInputStream bgm = AudioSystem.getAudioInputStream(new File("src/sound/voitonmaksu.wav"));
+                        Clip clip = AudioSystem.getClip();
+                        clip.open(bgm);
+                        clip.start();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    //Siirrä voitot pelikoneen rahamäärään
+                    rayPelikone.VoitotRahamaaraan();
+                    //Jatka vaiheeseen [1.]
+                    rayPelikone.setiPelivaihe(1);
+                } else {
+                    //Älä tee mitään
+                }
+
+            }
+        });
+
+        jButton2.setBackground(new java.awt.Color(255, 153, 51));
+        jButton2.setText("Tuplaa");
+        jButton2.setPreferredSize(new java.awt.Dimension(100, 50));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+
+            //[TUPLAA]
+            private void jButton2ActionPerformed(ActionEvent evt) {
+
+                try {
+                    AudioInputStream bgm = AudioSystem.getAudioInputStream(new File("src/sound/click_1.wav"));
+                    Clip clip = AudioSystem.getClip();
+                    clip.open(bgm);
+                    clip.start();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                if (rayPelikone.getiPelivaihe() == 3) {
+                    jLabel24.setText("Valitse Suuri tai Pieni");
+
+                    jLabel1.setIcon(new ImageIcon(getClass().getResource("/Kuvat/cardback.png")));
+                    jLabel2.setIcon(new ImageIcon(getClass().getResource("/Kuvat/cardback.png")));
+                    jLabel3.setIcon(new ImageIcon(getClass().getResource("/Kuvat/cardback.png")));
+                    jLabel4.setIcon(new ImageIcon(getClass().getResource("/Kuvat/cardback.png")));
+                    jLabel5.setIcon(new ImageIcon(getClass().getResource("/Kuvat/cardback.png")));
+
+                    //Sekoita kortit takaisin pakkaan
+                    KorttiKasittely.SiirraKaikkiKortitPakkaan(kortitPakka, kortitKasi, kortitMuu);
+                    //Jatka vaiheeseen [4.]
+                    rayPelikone.setiPelivaihe(4);
+
+                } else if (rayPelikone.getiPelivaihe() == 5) {
+                    jLabel24.setText("Valitse Suuri tai Pieni");
+                    jLabel1.setIcon(new ImageIcon(getClass().getResource("/Kuvat/cardback.png")));
+                    jLabel2.setIcon(new ImageIcon(getClass().getResource("/Kuvat/cardback.png")));
+                    jLabel3.setIcon(new ImageIcon(getClass().getResource("/Kuvat/cardback.png")));
+                    jLabel4.setIcon(new ImageIcon(getClass().getResource("/Kuvat/cardback.png")));
+                    jLabel5.setIcon(new ImageIcon(getClass().getResource("/Kuvat/cardback.png")));
+
+                    //Sekoita kortit takaisin pakkaan
+                    KorttiKasittely.SiirraKaikkiKortitPakkaan(kortitPakka, kortitKasi, kortitMuu);
+                    //Jatka vaiheeseen [4.]
+                    rayPelikone.setiPelivaihe(4);
+                } else {
+                    //Älä tee mitään
+                }
+            }
+        });
+
+        jButton3.setBackground(new java.awt.Color(0, 204, 255));
+        jButton3.setText("Panos");
+        jButton3.setPreferredSize(new java.awt.Dimension(100, 50));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+
+            //[PANOS]
+            private void jButton3ActionPerformed(ActionEvent evt) {
+
+                if (rayPelikone.getiPelivaihe() == 1) {
+                    try {
+                        AudioInputStream bgm = AudioSystem.getAudioInputStream(new File("src/sound/panos.wav"));
+                        Clip clip = AudioSystem.getClip();
+                        clip.open(bgm);
+                        clip.start();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    //Muuta panosta
+                    rayPelikone.NostaPanosta();
+                } else {
+                    //Älä tee mitään
+                    try {
+                        AudioInputStream bgm = AudioSystem.getAudioInputStream(new File("src/sound/click_1.wav"));
+                        Clip clip = AudioSystem.getClip();
+                        clip.open(bgm);
+                        clip.start();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+
+        jButton4.setBackground(new java.awt.Color(0, 255, 51));
+        jButton4.setText("Jaa");
+        jButton4.setPreferredSize(new java.awt.Dimension(100, 50));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+
+            //[JAKO]
+            private void jButton4ActionPerformed(ActionEvent evt) {
+
+                try {
+                    AudioInputStream bgm = AudioSystem.getAudioInputStream(new File("src/sound/click_1.wav"));
+                    Clip clip = AudioSystem.getClip();
+                    clip.open(bgm);
+                    clip.start();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                //KorttiKasittely.SiirraKaikkiKortitPakkaan(kortitPakka, kortitKasi, kortitMuu);
+                if (rayPelikone.getiPelivaihe() == 1) {
+                    jLabel24.setText("Lukitse haluamasi kortit, ja Jaa");
+                    jLabel8.setBackground(Color.lightGray);
+                    jLabel9.setBackground(Color.lightGray);
+                    jLabel10.setBackground(Color.lightGray);
+                    jLabel11.setBackground(Color.lightGray);
+                    jLabel12.setBackground(Color.lightGray);
+                    jLabel13.setBackground(Color.lightGray);
+                    jLabel14.setBackground(Color.lightGray);
+                    jLabel15.setBackground(Color.lightGray);
+
+                    try {
+                        AudioInputStream bgm = AudioSystem.getAudioInputStream(new File("src/sound/jaa_1.wav"));
+                        Clip clip = AudioSystem.getClip();
+                        clip.open(bgm);
+                        clip.start();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    //Vähennä panoksen määrä
+                    rayPelikone.MaksaPanos();
+                    //Sekoita kortit takaisin pakkaan
+                    KorttiKasittely.SiirraKaikkiKortitPakkaan(kortitPakka, kortitKasi, kortitMuu);
+                    //Jaa käsikortit
+                    KorttiKasittely.NostaKasiTayteenKortteja(kortitPakka, kortitKasi);
+                    //Tarkista voitot
+                    String sVoittavatKortit = VoitonTarkistus.LukitseVoitot(kortitKasi);
+                    //Lukitse voittokortit
+                    Funktiot.LukitseVoittokortit(sVoittavatKortit);
+                    //Jatka vaiheeseen [2.]
+                    rayPelikone.setiPelivaihe(2);
+                } else if (rayPelikone.getiPelivaihe() == 2) {
+
+                    //Tarkista että edes yksi kortti on lukittu
+                    boolean bTemp = Funktiot.TarkistaOnkoMikaanKorttiLukittu();
+                    if (bTemp) {
+                        try {
+                            AudioInputStream bgm = AudioSystem.getAudioInputStream(new File("src/sound/yksi_kortti.wav"));
+                            Clip clip = AudioSystem.getClip();
+                            clip.open(bgm);
+                            clip.start();
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        //Siirrä kortteja pois joita ei ole lukittu
+                        KorttiKasittely.SiirraVaihdettavatKortitMuuKasaan(kortitMuu, kortitKasi);
+                        //Nosta uusia käsikortteja vanhojen tilalle
+                        KorttiKasittely.NostaUudetKortitVaihdettujenTilalle(kortitPakka, kortitKasi);
+                        //Tarkista voitot
+                        String sVoittavatKortit = VoitonTarkistus.LukitseVoitot(kortitKasi);
+                        //Jos ensimmäinen merkki ei ole 0 niin tuli voitto
+                        int iVoitto = Character.getNumericValue(sVoittavatKortit.charAt(0));
+                        //Lasketaan voitot
+                        rayPelikone.LaskeVoitot(iVoitto);
+                        if (iVoitto != 0) {
+                            //Jos voitto niin
+                            jLabel24.setText("Voitit! Valitse Tuplaa tai Voitonmaksu");
+                            //Jatka vaiheeseen [3.]
+                            rayPelikone.setiPelivaihe(3);
+                        } else {
+                            //Jos ei voittoa niin
+                            jLabel24.setText("Ei, Voittoa.  Aseta Panos ja Jaa ");
+                            //Jatka vaiheeseen [1.]
+                            rayPelikone.setiPelivaihe(1);
+                        }
+                        //Poista korttien lukitus
+                        Funktiot.KortitAsetaLukitus(0, false);
+                        Funktiot.KortitAsetaLukitus(1, false);
+                        Funktiot.KortitAsetaLukitus(2, false);
+                        Funktiot.KortitAsetaLukitus(3, false);
+                        Funktiot.KortitAsetaLukitus(4, false);
+                    }
+                } else {
+                    //Älä tee mitään
+                }
+
+            }
+        });
+
+        jButton5.setBackground(new java.awt.Color(255, 102, 255));
+        jButton5.setText("Suuri");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+
+            //[SUURI]
+            private void jButton5ActionPerformed(ActionEvent evt) {
+
+                try {
+                    AudioInputStream bgm = AudioSystem.getAudioInputStream(new File("src/sound/click_1.wav"));
+                    Clip clip = AudioSystem.getClip();
+                    clip.open(bgm);
+                    clip.start();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                if (rayPelikone.getiPelivaihe() == 4) {
+                    int iTuplausVoitto = VoitonTarkistus.Tuplaus(1, kortitPakka, kortitKasi); //1 = Suuri
+                    //Tarkista tuliko voittoa
+                    if (iTuplausVoitto == 2) {
+                        jLabel24.setText("Voitit, voit Tuplata uudestaan tai ottaa Voitonmaksun");
+
+                        //VOITTO
+                        //Tuplaa voitot
+                        rayPelikone.TuplaaVoitot();
+                        //Jatka vaiheeseen [5.]
+                        rayPelikone.setiPelivaihe(5);
+                    } else if (iTuplausVoitto == 1) {
+                        jLabel24.setText("Tasapeli, aseta Panos ja Jaa");
+
+                        //TASAPELI
+                        //Siirrä voitot pelikoneen rahamäärään
+                        rayPelikone.VoitotRahamaaraan();
+                        //Jatka vaiheeseen [1.]
+                        rayPelikone.setiPelivaihe(1);
+                    } else {
+                        //HÄVIÖ
+                        jLabel24.setText("Hävisit, aseta Panos ja Jaa kortit");
+
+                        rayPelikone.LaskeVoitot(0);
+                        //Jatka vaiheeseen [1.]
+                        rayPelikone.setiPelivaihe(1);
+                    }
+                } else {
+                    //Älä tee mitään
+                }
+            }
+        });
+
+        jButton6.setBackground(new java.awt.Color(0, 204, 204));
+        jButton6.setText("Pieni");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+
+            //[PIENI]
+            private void jButton6ActionPerformed(ActionEvent evt) {
+                try {
+                    AudioInputStream bgm = AudioSystem.getAudioInputStream(new File("src/sound/click_1.wav"));
+                    Clip clip = AudioSystem.getClip();
+                    clip.open(bgm);
+                    clip.start();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                if (rayPelikone.getiPelivaihe() == 4) {
+                    int iTuplausVoitto = VoitonTarkistus.Tuplaus(0, kortitPakka, kortitKasi); //0 = Pieni
+                    //Tarkista tuliko voittoa
+                    if (iTuplausVoitto == 2) {
+                        jLabel24.setText("Voitit, voit Tuplata uudestaan tai ottaa Voitonmaksun");
+                        //VOITTO
+                        //Tuplaa voitot
+                        rayPelikone.TuplaaVoitot();
+                        //Jatka vaiheeseen [5.]
+                        rayPelikone.setiPelivaihe(5);
+                    } else if (iTuplausVoitto == 1) {
+                        jLabel24.setText("Tasapeli, aseta Panos ja Jaa");
+                        //TASAPELI
+                        //Siirrä voitot pelikoneen rahamäärään
+                        rayPelikone.VoitotRahamaaraan();
+                        //Jatka vaiheeseen [1.]
+                        rayPelikone.setiPelivaihe(1);
+                    } else {
+                        jLabel24.setText("Hävisit, aseta Panos ja Jaa kortit");
+                        //HÄVIÖ
+                        rayPelikone.LaskeVoitot(0);
+                        //Jatka vaiheeseen [1.]
+                        rayPelikone.setiPelivaihe(1);
+                    }
+                } else {
+                    //Älä tee mitään
+                }
+            }
+        });
+
+        //<editor-fold defaultstate="collapsed" desc="+++++++++++++++Panel1 Layoutti++++++++++++++++++++">
+        GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(23)
+                                .addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 222, GroupLayout.PREFERRED_SIZE)
+                                .addGap(22, 22, 22)
+                                .addComponent(jLabel2, GroupLayout.PREFERRED_SIZE, 222, GroupLayout.PREFERRED_SIZE)
+                                .addGap(22, 22, 22)
+                                .addComponent(jLabel3, GroupLayout.PREFERRED_SIZE, 222, GroupLayout.PREFERRED_SIZE)
+                                .addGap(22, 22, 22)
+                                .addComponent(jLabel4, GroupLayout.PREFERRED_SIZE, 222, GroupLayout.PREFERRED_SIZE)
+                                .addGap(22, 22, 22)
+                                .addComponent(jLabel5, GroupLayout.PREFERRED_SIZE, 222, GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 323, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel2, GroupLayout.PREFERRED_SIZE, 323, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel3, GroupLayout.PREFERRED_SIZE, 323, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel4, GroupLayout.PREFERRED_SIZE, 323, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel5, GroupLayout.PREFERRED_SIZE, 323, GroupLayout.PREFERRED_SIZE)))
+        );
+
+        //</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc="+++++++++++++++Panel2 Layoutti++++++++++++++++++++">
+        GroupLayout jPanel2Layout = new GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+                jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                                                .addContainerGap()
+                                                                .addComponent(jButton1, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                                                .addGap(28, 28, 28)
+                                                                .addComponent(jCheckBox1)))
+                                                .addGap(46, 46, 46)
+                                                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jCheckBox2)
+                                                        .addComponent(jLabel7, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel6, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jCheckBox3)
+                                                        .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                                                .addComponent(jLabel16, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(jLabel17, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addGap(82, 82, 82)
+                                                .addComponent(jLabel19, GroupLayout.PREFERRED_SIZE, 87, GroupLayout.PREFERRED_SIZE)
+                                                .addGap(170, 170, 170)
+                                                .addComponent(jLabel20)))
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED, 14, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                                                .addComponent(jCheckBox4)
+                                                                .addGap(160, 160, 160))
+                                                        .addGroup(GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                                                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                                                        .addComponent(jLabel21)
+                                                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                                                                .addComponent(jButton2, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
+                                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                                                                        .addComponent(jButton5, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+                                                                                        .addComponent(jButton6, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE))))
+                                                                .addGap(6, 6, 6)))
+                                                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jCheckBox5)
+                                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                                                .addComponent(jButton3, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(5, 5, 5)
+                                                                .addComponent(jLabel18, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(33, 33, 33)
+                                                                .addComponent(jButton4, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)))
+                                                //button 4 jälkeen
+                                                .addGap(64, 64, 64)
+                                                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                        .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                .addComponent(jLabel9, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(jLabel10, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(jLabel11, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(jLabel12, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(jLabel13, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(jLabel14, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(jLabel15, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+                                                        .addComponent(jLabel8, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jLabel22)
+                                                .addGap(181, 181, 181)
+                                                .addComponent(jLabel23)
+                                                .addGap(75, 75, 75))))
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel24)
+                        .addGap(46, 46, 46)
+        );
+        jPanel2Layout.setVerticalGroup(
+                jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jLabel19)
+                                                        .addComponent(jLabel20)
+                                                        .addComponent(jLabel21)))
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addGap(15, 15, 15)
+                                                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jLabel22)
+                                                        .addComponent(jLabel23))))
+                                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addGap(55, 55, 55)
+                                                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                                                .addGap(1, 1, 1)
+                                                                .addComponent(jButton4, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(113, 113, 113))
+                                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                                                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                                                                        .addGroup(GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                                                                .addGap(2, 2, 2)
+                                                                                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                                                        .addComponent(jLabel7, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
+                                                                                        .addComponent(jLabel16, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE))
+                                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                                                                        .addComponent(jLabel6, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
+                                                                                        .addComponent(jLabel17, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)))
+                                                                        .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                                                .addComponent(jButton3, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(jLabel18, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE))
+                                                                        .addGroup(GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                                                                .addComponent(jButton5, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+                                                                                .addGap(6, 6, 6)
+                                                                                .addComponent(jButton6, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE))
+                                                                        .addComponent(jButton2, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(jButton1, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE))
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                                        .addComponent(jLabel24)
+                                                                        .addComponent(jCheckBox1)
+                                                                        .addComponent(jCheckBox2)
+                                                                        .addComponent(jCheckBox3)
+                                                                        .addComponent(jCheckBox4)
+                                                                        .addComponent(jCheckBox5))
+                                                                .addContainerGap())))
+                                        .addGroup(GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jLabel8)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel9)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel10)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel11)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel12)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel13)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel14)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel15)
+                                                .addGap(23, 23, 23))))
+        );
+
+        //</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc="getAccessible">
+        jLabel24.getAccessibleContext();
+        jCheckBox1.getAccessibleContext().setAccessibleName("jC_B_1");
+        jCheckBox2.getAccessibleContext().setAccessibleName("jC_B_2");
+        jLabel18.getAccessibleContext().setAccessibleName("jLab_Panos_Summa");
+        jLabel16.getAccessibleContext().setAccessibleName("jLab_Suuri");
+        jLabel17.getAccessibleContext().setAccessibleName("jLab_17_tilisumma");
+        jButton1.getAccessibleContext().setAccessibleName("jLab_Voitonmaksu");
+        jButton2.getAccessibleContext().setAccessibleName("jLab_Tuplaa");
+        jButton3.getAccessibleContext().setAccessibleName("jLab_Panos");
+        jButton5.getAccessibleContext().setAccessibleName("jBut_5_Suuri");
+        jButton6.getAccessibleContext().setAccessibleName("jBut_6_pienempi");
+//</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc="++++++++Layouttia++++++++++++">
+        GroupLayout layout = new GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(jPanel2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addGap(1, 1, 1)
+                                .addComponent(jPanel2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        );
+
+        pack();
+    }
+
+    //</editor-fold>
+    public static void main(String args[]) {
+
+        try {
+//            aloitus = AudioSystem.getClip();
+//            aloitus.open(AudioSystem.getAudioInputStream(new File("src/sound/click_2.wav")));
+//            FloatControl gainControl
+//                    = (FloatControl) aloitus.getControl(FloatControl.Type.MASTER_GAIN);
+//            gainControl.setValue(-80.0f);
+//            aloitus.start();
+
+            tuplaus = AudioSystem.getClip();
+            tuplaus.open(AudioSystem.getAudioInputStream(new File("src/sound/popcorn.wav")));
+
+            click1 = AudioSystem.getClip();
+            click1.open(AudioSystem.getAudioInputStream(new File("src/sound/click_1.wav")));
+
+            voitonmaksu = AudioSystem.getClip();
+            voitonmaksu.open(AudioSystem.getAudioInputStream(new File("src/sound/voitonmaksu.wav")));
+
+            panos = AudioSystem.getClip();
+            panos.open(AudioSystem.getAudioInputStream(new File("src/sound/panos.wav")));
+
+            sfx = AudioSystem.getClip();
+            sfx.open(AudioSystem.getAudioInputStream(new File("src/sound/jaa_1.wav")));
+
+            sfx2 = AudioSystem.getClip();
+            sfx2.open(AudioSystem.getAudioInputStream(new File("src/sound/click_lock.wav")));
+
+            jazz = AudioSystem.getClip();
+            jazz.open(AudioSystem.getAudioInputStream(new File("src/sound/jazz.wav")));
+            FloatControl gainControl
+                    = (FloatControl) jazz.getControl(FloatControl.Type.MASTER_GAIN);
+            gainControl.setValue(-10.0f);
+            jazz.start();
+            jazz.loop(Clip.LOOP_CONTINUOUSLY);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+//            AudioInputStream bgm = AudioSystem.getAudioInputStream(new File("src/sound/voitonmaksu.wav"));
+//            clip = AudioSystem.getClip();
+//            clip.open(bgm);
+//            FloatControl gainControl
+//                    = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+//            gainControl.setValue(-80.0f);
+//            clip.start();
+//            clip.stop();
+//            clip.loop(Clip.LOOP_CONTINUOUSLY);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Gui_Main().setVisible(true);
+            }
+        });
+    }
+    //<editor-fold defaultstate="collapsed" desc="private swing">
+
+    public static JButton jButton1;
+    public static JButton jButton2;
+    public static JButton jButton3;
+    public static JButton jButton4;
+    public static JButton jButton5;
+    private JButton jButton6;
+    public static JCheckBox jCheckBox1;
+    public static JCheckBox jCheckBox2;
+    public static JCheckBox jCheckBox3;
+    public static JCheckBox jCheckBox4;
+    public static JCheckBox jCheckBox5;
+    public static JLabel jLabel1;
+    public static JLabel jLabel2;
+    public static JLabel jLabel3;
+    public static JLabel jLabel4;
+    public static JLabel jLabel5;
+    private JLabel jLabel6;
+    private JLabel jLabel7;
+    public static JLabel jLabel8;
+    public static JLabel jLabel9;
+    public static JLabel jLabel10;
+    public static JLabel jLabel11;
+    public static JLabel jLabel12;
+    public static JLabel jLabel13;
+    public static JLabel jLabel14;
+    public static JLabel jLabel15;
+    public static JLabel jLabel16;
+    public static JLabel jLabel17;
+    public static JLabel jLabel18;
+    private JLabel jLabel19;
+    private JLabel jLabel20;
+    private JLabel jLabel21;
+    private JLabel jLabel22;
+    private JLabel jLabel23;
+    public static JLabel jLabel24;
+    private JPanel jPanel1;
+    private JPanel jPanel2;
+    Pelikone rayPelikone = new Pelikone();
+    Pelikone voittosumma = new Pelikone();
+    public static Clip tuplaus;
+    public static Clip sfx;
+    public static Clip sfx2;
+    public static Clip aloitus;
+    public static Clip click1;
+    public static Clip voitonmaksu;
+    public static Clip panos;
+    public static Clip bell;
+    public static Clip jazz;
+//    public static Clip sfx;
+
+    //</editor-fold>
+}
+
          *
          * jLabel19; LUKITTU/EI LUKITTU 1 jLabel20; LUKITTU/EI LUKITTU 2
          * jLabel21; LUKITTU/EI LUKITTU 3 jLabel22; LUKITTU/EI LUKITTU 4
