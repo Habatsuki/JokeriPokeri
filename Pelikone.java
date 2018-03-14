@@ -1,4 +1,5 @@
 package oliot_projekti;
+import static jokeripokeri.Gui_Main.tuplaus;
 
 //Peliautomaatti (Olio)
 public class Pelikone {
