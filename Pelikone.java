@@ -101,6 +101,8 @@ public class Pelikone {
         
         //Aseta painikkeet lukituiksi
         if (this.iPelivaihe == 1) {
+            tuplaus.stop();
+
             //Jos rahat eivät riitä panokseen aseta panos rahamäärän suuruiseksi
             if (this.dRahamaara < this.dPanos) {
                 this.dPanos = this.dRahamaara;
@@ -114,6 +116,7 @@ public class Pelikone {
         } else if (this.iPelivaihe == 3) {
 
         } else if (this.iPelivaihe == 4) {
+            tuplaus.start();
             //Gui_Main.AsetaOhjeteksti("Valitse suuri tai pieni");
         } else if (this.iPelivaihe == 5) {
 
