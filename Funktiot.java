@@ -90,16 +90,17 @@ public class Funktiot {
         };
     }
     //Kortin lukituksen asemmatinen halutuksi
-    public static void KortitAsetaLukitusPois(int iIndex, boolean bTemp, ArrayList<Kortti> kortitKasi) {
+    public static void KortitAsetaLukitusPois(ArrayList<Kortti> kasi) {
         Gui_Main.jCheckBox5.setSelected(false);
         Gui_Main.jCheckBox4.setSelected(false);
         Gui_Main.jCheckBox3.setSelected(false);
         Gui_Main.jCheckBox2.setSelected(false);
         Gui_Main.jCheckBox1.setSelected(false);
         //Tähän kutsu potentiaalivoittojen laskemiselle
+        VoitonTarkistus.Potentiaaliset(kasi);
     }
     //Kortin lukituksen asemmatinen halutuksi
-    public static void KortitAsetaLukitus(int iIndex, boolean bTemp) {
+    public static void KortitAsetaLukitus(int iIndex, boolean bTemp, ArrayList<Kortti> kasi) {
         javax.swing.JCheckBox jCheckbox_Temp;
                 
         switch (iIndex) {
@@ -120,6 +121,8 @@ public class Funktiot {
                 break;
         }
         jCheckbox_Temp.setSelected(bTemp);
+        //Tähän kutsu potentiaalivoittojen laskemiselle
+        VoitonTarkistus.Potentiaaliset(kasi);
     }
     //Lukitse ne kortit jotka VoitonTarkistus.LukitseVoitot koodi on merkinnyt
     public static void LukitseVoittokortit(String sVoittokortit) {
