@@ -26,7 +26,6 @@ public class Gui_Main extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(200, 100));
         setResizable(false);
-
     }
 
     private void initComponents() {
@@ -583,14 +582,15 @@ public class Gui_Main extends JFrame {
                 //KorttiKasittely.SiirraKaikkiKortitPakkaan(kortitPakka, kortitKasi, kortitMuu);
                 if (rayPelikone.getiPelivaihe() == 1) {
                     jLabel24.setText("Lukitse haluamasi kortit, ja Jaa");
-                    jLabel8.setBackground(Color.yellow);
-                    jLabel9.setBackground(Color.yellow);
-                    jLabel10.setBackground(Color.yellow);
-                    jLabel11.setBackground(Color.yellow);
-                    jLabel12.setBackground(Color.yellow);
-                    jLabel13.setBackground(Color.yellow);
-                    jLabel14.setBackground(Color.yellow);
-                    jLabel15.setBackground(Color.yellow);
+//                    jLabel8.setBackground(Color.yellow);
+//                    jLabel9.setBackground(Color.yellow);
+//                    jLabel10.setBackground(Color.yellow);
+//                    jLabel11.setBackground(Color.yellow);
+//                    jLabel12.setBackground(Color.yellow);
+//                    jLabel13.setBackground(Color.yellow);
+//                    jLabel14.setBackground(Color.yellow);
+//                    jLabel15.setBackground(Color.yellow);
+                    VoitonTarkistus.Potentiaaliset(kortitKasi);
 
                     try {
                         AudioInputStream bgm = AudioSystem.getAudioInputStream(new File("src/sound/jaa_1.wav"));
@@ -610,6 +610,8 @@ public class Gui_Main extends JFrame {
                     String sVoittavatKortit = VoitonTarkistus.LukitseVoitot(kortitKasi);
                     //Lukitse voittokortit
                     Funktiot.LukitseVoittokortit(sVoittavatKortit);
+                    VoitonTarkistus.Potentiaaliset(kortitKasi);
+
                     //Jatka vaiheeseen [2.]
                     rayPelikone.setiPelivaihe(2);
                 } else if (rayPelikone.getiPelivaihe() == 2) {
@@ -1086,3 +1088,4 @@ public class Gui_Main extends JFrame {
 
     //</editor-fold>
 }
+
