@@ -1,5 +1,7 @@
 package oliot_projekti;
 
+package jokeripokeri;
+
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
@@ -1016,6 +1018,14 @@ public class Gui_Main extends JFrame {
 
             sfx2 = AudioSystem.getClip();
             sfx2.open(AudioSystem.getAudioInputStream(new File("src/sound/click_lock.wav")));
+            
+            jazz = AudioSystem.getClip();
+            jazz.open(AudioSystem.getAudioInputStream(new File("src/sound/jazz.wav")));
+            jazz.start();
+            jazz.loop(Clip.LOOP_CONTINUOUSLY);
+
+//            bell = AudioSystem.getClip();
+//            bell.open(AudioSystem.getAudioInputStream(new File("src/sound/bell.wav")));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -1084,6 +1094,11 @@ public class Gui_Main extends JFrame {
     public static Clip click1;
     public static Clip voitonmaksu;
     public static Clip panos;
+    public static Clip bell;
+    public static Clip jazz;
+//    public static Clip sfx;
+
+    
     //</editor-fold>
 }
 
