@@ -96,7 +96,7 @@ public class Pelikone {
         this.iPelivaihe = iAsetaVaihe;
         
         //Tarkista onko pelikoneessa rahaa
-        if (this.dRahamaara <= 0) {
+        if (this.iPelivaihe == 1 && this.dRahamaara <= 0) {
             this.iPelivaihe = 6;
         }
         
