@@ -98,6 +98,29 @@ public class Funktiot {
         Gui_Main.jCheckBox1.setSelected(false);
         //Tähän kutsu potentiaalivoittojen laskemiselle
     }
+    //Kortin lukituksen asemmatinen halutuksi
+    public static void KortitAsetaLukitus(int iIndex, boolean bTemp) {
+        javax.swing.JCheckBox jCheckbox_Temp;
+                
+        switch (iIndex) {
+            case 4:
+                jCheckbox_Temp = Gui_Main.jCheckBox5;
+                break;
+            case 3:
+                jCheckbox_Temp = Gui_Main.jCheckBox4;
+                break;
+            case 2:
+                jCheckbox_Temp = Gui_Main.jCheckBox3;
+                break;
+            case 1:
+                jCheckbox_Temp = Gui_Main.jCheckBox2;
+                break;
+            default:
+                jCheckbox_Temp = Gui_Main.jCheckBox1;
+                break;
+        }
+        jCheckbox_Temp.setSelected(bTemp);
+    }
     //Lukitse ne kortit jotka VoitonTarkistus.LukitseVoitot koodi on merkinnyt
     public static void LukitseVoittokortit(String sVoittokortit) {
         //Esim. 801234
