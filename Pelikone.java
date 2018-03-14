@@ -73,36 +73,92 @@ public class Pelikone {
         int iVoittokerroin = 0;
         //Viitoset
         if (iVoittoTyyppi == 8) {
-            jLabel8.setBackground(Color.red);
+                    jLabel8.setBackground(Color.red);
+                    jLabel9.setBackground(Color.lightGray);
+                    jLabel10.setBackground(Color.lightGray);
+                    jLabel11.setBackground(Color.lightGray);
+                    jLabel12.setBackground(Color.lightGray);
+                    jLabel13.setBackground(Color.lightGray);
+                    jLabel14.setBackground(Color.lightGray);
+                    jLabel15.setBackground(Color.lightGray);
             iVoittokerroin = 50;
             //Värisuora
         } else if (iVoittoTyyppi == 7) {
-            jLabel9.setBackground(Color.red);
-            iVoittokerroin = 30;
+                    jLabel8.setBackground(Color.lightGray);
+                    jLabel9.setBackground(Color.red);
+                    jLabel10.setBackground(Color.lightGray);
+                    jLabel11.setBackground(Color.lightGray);
+                    jLabel12.setBackground(Color.lightGray);
+                    jLabel13.setBackground(Color.lightGray);
+                    jLabel14.setBackground(Color.lightGray);
+                    jLabel15.setBackground(Color.lightGray);
+                    iVoittokerroin = 30;
             //Neloset
         } else if (iVoittoTyyppi == 6) {
-            jLabel10.setBackground(Color.red);
-            iVoittokerroin = 15;
+                    jLabel8.setBackground(Color.lightGray);
+                    jLabel9.setBackground(Color.lightGray);
+                    jLabel10.setBackground(Color.red);
+                    jLabel11.setBackground(Color.lightGray);
+                    jLabel12.setBackground(Color.lightGray);
+                    jLabel13.setBackground(Color.lightGray);
+                    jLabel14.setBackground(Color.lightGray);
+                    jLabel15.setBackground(Color.lightGray);
+                    iVoittokerroin = 15;
             //Täyskäsi
         } else if (iVoittoTyyppi == 5) {
-            jLabel11.setBackground(Color.red);
-            iVoittokerroin = 8;
+                    jLabel8.setBackground(Color.lightGray);
+                    jLabel9.setBackground(Color.lightGray);
+                    jLabel10.setBackground(Color.lightGray);
+                    jLabel11.setBackground(Color.red);
+                    jLabel12.setBackground(Color.lightGray);
+                    jLabel13.setBackground(Color.lightGray);
+                    jLabel14.setBackground(Color.lightGray);
+                    jLabel15.setBackground(Color.lightGray);
+                    iVoittokerroin = 8;
             //Väri
         } else if (iVoittoTyyppi == 4) {
-            jLabel12.setBackground(Color.red);
-            iVoittokerroin = 4;
+                    jLabel8.setBackground(Color.lightGray);
+                    jLabel9.setBackground(Color.lightGray);
+                    jLabel10.setBackground(Color.lightGray);
+                    jLabel11.setBackground(Color.lightGray);
+                    jLabel12.setBackground(Color.red);
+                    jLabel13.setBackground(Color.lightGray);
+                    jLabel14.setBackground(Color.lightGray);
+                    jLabel15.setBackground(Color.lightGray);
+                    iVoittokerroin = 4;
             //Suora
         } else if (iVoittoTyyppi == 3) {
-            jLabel13.setBackground(Color.red);
-            iVoittokerroin = 3;
+                    jLabel8.setBackground(Color.lightGray);
+                    jLabel9.setBackground(Color.lightGray);
+                    jLabel10.setBackground(Color.lightGray);
+                    jLabel11.setBackground(Color.lightGray);
+                    jLabel12.setBackground(Color.lightGray);
+                    jLabel13.setBackground(Color.red);
+                    jLabel14.setBackground(Color.lightGray);
+                    jLabel15.setBackground(Color.lightGray);
+                    iVoittokerroin = 3;
             //Kolmoset
         } else if (iVoittoTyyppi == 2) {
-            jLabel14.setBackground(Color.red);
-            iVoittokerroin = 2;
+                    jLabel8.setBackground(Color.lightGray);
+                    jLabel9.setBackground(Color.lightGray);
+                    jLabel10.setBackground(Color.lightGray);
+                    jLabel11.setBackground(Color.lightGray);
+                    jLabel12.setBackground(Color.lightGray);
+                    jLabel13.setBackground(Color.lightGray);
+                    jLabel14.setBackground(Color.red);
+                    jLabel15.setBackground(Color.lightGray);
+                    iVoittokerroin = 2;
             //Kaksi paria
         } else if (iVoittoTyyppi == 1) {
-            jLabel15.setBackground(Color.red);
-            iVoittokerroin = 2;
+                    jLabel8.setBackground(Color.lightGray);
+                    jLabel9.setBackground(Color.lightGray);
+                    jLabel10.setBackground(Color.lightGray);
+                    jLabel11.setBackground(Color.lightGray);
+                    jLabel12.setBackground(Color.lightGray);
+                    jLabel13.setBackground(Color.lightGray);
+                    jLabel14.setBackground(Color.lightGray);
+                    jLabel15.setBackground(Color.red);
+                    iVoittokerroin = 2;
             //Ei voittoa
         } else {
             iVoittokerroin = 0;
@@ -140,6 +196,7 @@ public class Pelikone {
             tuplaus.stop();
             jazz.start();
             jazz.loop(Clip.LOOP_CONTINUOUSLY);
+            
 
             //Jos rahat eivät riitä panokseen aseta panos rahamäärän suuruiseksi
             if (this.dRahamaara < this.dPanos) {
