@@ -34,28 +34,48 @@ public class Gui_Main extends JFrame {
         //<editor-fold defaultstate="collapsed" desc="Labelien ja painikkeiden sanakirja">
         /**
          *
-         * jButton1; Voitonmaksu jButton2; Tuplaa jButton3; Panos jButton4; Jaa
-         * jButton5; Suuri (tuplaus) jButton6; Pieni (tuplaus)
+         * jButton1; Voitonmaksu 
+         * jButton2; Tuplaa 
+         * jButton3; Panos 
+         * jButton4; Jaa
+         * jButton5; Suuri (tuplaus) 
+         * jButton6; Pieni (tuplaus)
          *
-         * jCheckBox1; jCheckBox2; jCheckBox3; jCheckBox4; jCheckBox5;
+         * jCheckBox1; 
+         * jCheckBox2; 
+         * jCheckBox3; 
+         * jCheckBox4; 
+         * jCheckBox5;
          *
-         * jLabel1; Kortti 1 jLabel2; Kortti 2 jLabel3; Kortti 3 jLabel4; Kortti
-         * 4 jLabel5; Kortti 5
+         * jLabel1; Kortti 1 
+         * jLabel2; Kortti 2 
+         * jLabel3; Kortti 3 
+         * jLabel4; Kortti 4 
+         * jLabel5; Kortti 5
          *
-         * jLabel6; Tili: (teksti) jLabel7; Voitot: (teksti)
-         *
-         * jLabel8; Värisuora jLabel9; Viitoset jLabel10; Neloset jLabel11;
-         * Täyskäsi jLabel12; Väri jLabel13; Suora jLabel14; Kolmoset
+         * jLabel6; Tili: (teksti) 
+         * jLabel7; Voitot: (teksti)
+         * jLabel8; Värisuora 
+         * jLabel9; Viitoset 
+         * jLabel10; Neloset 
+         * jLabel11;Täyskäsi 
+         * jLabel12; Väri 
+         * jLabel13; Suora 
+         * jLabel14; Kolmoset
          * jLabel15;Kaksi Paria
          *
-         * jLabel16; Voitot (Rahamaara) jLabel17; Tili (Rahamaara)
+         * jLabel16; Voitot (Rahamaara) 
+         * jLabel17; Tili (Rahamaara)
          * jLabel18;Panos (Rahamaara)
          *
-         * jLabel19; LUKITTU/EI LUKITTU 1 jLabel20; LUKITTU/EI LUKITTU 2
-         * jLabel21; LUKITTU/EI LUKITTU 3 jLabel22; LUKITTU/EI LUKITTU 4
+         * jLabel19; LUKITTU/EI LUKITTU 1 
+         * jLabel20; LUKITTU/EI LUKITTU 2
+         * jLabel21; LUKITTU/EI LUKITTU 3 
+         * jLabel22; LUKITTU/EI LUKITTU 4
          * jLabel23; LUKITTU/EI LUKITTU 5
          *
-         * jPanel1; Korttien tausta (White) jPanel2; Painikkeiden tausta
+         * jPanel1; Korttien tausta (White) 
+         * jPanel2; Painikkeiden tausta
          * (light_grey)
          */
 //</editor-fold>
