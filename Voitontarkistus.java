@@ -1,7 +1,8 @@
 package oliot_projekti;
 
+import java.awt.Color;
 import java.util.*;
-
+import javax.swing.*;
 public class VoitonTarkistus {
     //Kirjoittaa palautettavan tekstipätkän josta selviää voiton tyyppi ja voittavat kortit
     public static String LukitseVoitot(ArrayList<Kortti> kasi){
@@ -70,7 +71,7 @@ public class VoitonTarkistus {
    palauttaa Stringin joka sisältää käden luovien korttien paikan taulukossa tai nollan jos kättä ei ollut.
    muut metodit palauttavat arvon true jos käsi löytyi ja false jos ei löytynyt.*/
     
-    public static String kaksiparia(Integer[][] kortit){
+    private static String kaksiparia(Integer[][] kortit){
         // tarkistetaan onko jokeria
         if(kortit[0][0] == 0){
             // katsotaan löytyykö paria
@@ -104,7 +105,7 @@ public class VoitonTarkistus {
         return "0";
     }
     
-    public static String kolmoset(Integer[][] kortit){
+    private static String kolmoset(Integer[][] kortit){
         //katsomme onko jokeria
         if(kortit[0][0] == 0){
             //jos jokeri on etsimme onko taulukossa paria
@@ -132,7 +133,7 @@ public class VoitonTarkistus {
         return "0";
     }
     
-    public static boolean suora(Integer[][] kortit){
+    private static boolean suora(Integer[][] kortit){
         //suoran tarkastus tarkistaa onko pienin ja suurin kortti neljän päässä toisistaan
         if(kortit[0][0] == 0){
             //jokerin kanssa pieni ja suurin saa olla myös vain kolmen päässä toisistaan
@@ -151,9 +152,9 @@ public class VoitonTarkistus {
             }
         }
         //teemme samat toimenpiteet ilman jokeria
-        if(kortit[0][0] == kortit[4][0] - 4){
+        if(kortit[0][0] == kortit[4][0] - 4 || kortit[0][0] == 1 && kortit[1][0] == 10){
             for(int i = 0;i <= 3;i++){
-                if(kortit[i][0].intValue() == kortit[i+1][0] || kortit[0][0] == 1 && kortit[1][0] == 10){
+                if(kortit[i][0].intValue() == kortit[i+1][0]){
                     return false;
                 }
             }
@@ -162,7 +163,7 @@ public class VoitonTarkistus {
         return false;
     }
     
-    public static boolean vari(Integer[][] kortit){
+    private static boolean vari(Integer[][] kortit){
         if(kortit[0][0] == 0){
             //jos jokeri löytyy tarkistetaan onko muut kortit samaa maata
             return kortit[1][1].intValue() == kortit[2][1].intValue() && kortit[1][1].intValue() == kortit[3][1].intValue() && kortit[1][1].intValue() == kortit[4][1].intValue();
@@ -171,7 +172,7 @@ public class VoitonTarkistus {
         return kortit[0][1].intValue() == kortit[1][1].intValue() && kortit[0][1].intValue() == kortit[2][1].intValue() && kortit[0][1].intValue() == kortit[3][1].intValue() && kortit[0][1].intValue() == kortit[4][1].intValue();
     }
     
-    public static boolean tayskasi(Integer[][] kortit){
+    private static boolean tayskasi(Integer[][] kortit){
         if(kortit[0][0] == 0){
             for(int i = 1;i <= 2;i++){
                 //jo jokeri löytyy tarkistamme onko taulukossa kolme saman arvoista korttia
@@ -186,7 +187,7 @@ public class VoitonTarkistus {
         return kortit[0][0].intValue() == kortit[1][0] && kortit[1][0].intValue() == kortit[2][0] && kortit[3][0].intValue() == kortit[4][0] || kortit[0][0].intValue() == kortit[1][0] && kortit[2][0].intValue() == kortit[3][0] && kortit[3][0].intValue() == kortit[4][0];    
     }
     
-    public static String neloset(Integer[][] kortit){
+    private static String neloset(Integer[][] kortit){
         if(kortit[0][0] == 0){
             //jos jokeri löytyy etsitään onko taulukossa kolme saman arvoista korttia
             for(int i = 1; i <= 2;i++){
@@ -217,7 +218,7 @@ public class VoitonTarkistus {
         
     }
     
-    public static boolean varisuora(Integer[][] kortit){
+    private static boolean varisuora(Integer[][] kortit){
         //värisuoran ja suoran logiikka on sama
         if(kortit[0][0] == 0){
             if(kortit[1][0] == (kortit[4][0] - 4) || kortit[1][0] == (kortit[4][0] - 3) || kortit[1][0] == 1 && kortit[2][0] >= 10){
@@ -245,12 +246,12 @@ public class VoitonTarkistus {
     
     }
     
-    public static boolean viitoset(Integer[][] kortit){
+    private static boolean viitoset(Integer[][] kortit){
         //tarkistamme onko ensimmäinen kortti jokeri ja muut kortit saman arvoisia keskenään
         return kortit[0][0] == 0 && kortit[1][0].intValue() == kortit[2][0].intValue() && kortit[1][0].intValue() == kortit[3][0].intValue() && kortit[1][0].intValue() == kortit[4][0].intValue();
     }
     
-    public static String voittokortit(String kortit2, Integer[][] kortit){
+    private static String voittokortit(String kortit2, Integer[][] kortit){
         //otetaan voittokorttien sijainti ylös
         String vkortit = "";
         for(int index = 0;index < kortit2.length();index++){
@@ -296,6 +297,192 @@ public class VoitonTarkistus {
         } else {
             //0 = häviö
             return 0;
+        }
+    }
+    
+    /*
+    ----------------------------------------------------------------------------
+    --------------------Potentiaaliset voitot-----------------------------------
+    ----------------------------------------------------------------------------
+    */
+    
+    public static void Potentiaaliset(ArrayList<Kortti> kasi){
+        String voitot = "";
+        int korttienmaara = 0;
+        for(int i = 0;i <= 4;i++){
+            if(KorttiKasittely.OnkoKorttiLukittu(i)){
+                if(kasi.get(i).getiKortinArvo() != 0){
+                    korttienmaara++;
+                }
+            }
+        }
+        Integer[][] kortit = new Integer[korttienmaara][2];
+        int o = 0;
+        for(int i = 0;i <= 4;i++){
+            if(KorttiKasittely.OnkoKorttiLukittu(i)){
+                if(kasi.get(i).getiKortinArvo() != 0){
+                    kortit[o][0] = kasi.get(i).getiKortinArvo();
+                    kortit[o][1] = kasi.get(i).getiKortinMaa();
+                    o++;
+                }
+            }
+        }
+        if(korttienmaara > 1){
+            Arrays.sort(kortit, new Comparator<Integer[]>() {
+                @Override
+                //arguments to this method represent the arrays to be sorted   
+                public int compare(Integer[] o1, Integer[] o2) {
+                        //get the item ids which are at index 0 of the array
+                        Integer arvoyksi = o1[0];
+                        Integer arvokaksi = o2[0];
+                        // sort on item id
+                        return arvoyksi.compareTo(arvokaksi);
+            }
+            });
+        }
+        if(korttienmaara <= 1){
+            voitot = "12345678";
+            labelVari(voitot);
+        }
+        else if(korttienmaara == 2){
+            voitot = voitot + "1256";
+            voitot = voitot + varijasuora(kortit, korttienmaara);
+            if(vitoset(kortit,korttienmaara)){
+                voitot = voitot + "8";
+            }
+            labelVari(voitot);
+        }
+        else if(korttienmaara == 3){
+            voitot = voitot + "12" + varijasuora(kortit, korttienmaara);
+            if(onkopari(kortit,korttienmaara)){
+                voitot = voitot + "56";
+            }
+            if(vitoset(kortit,korttienmaara)){
+                voitot = voitot + "8";
+            }
+            labelVari(voitot);
+        }
+        else if(korttienmaara == 4){
+            if(onkopari(kortit, korttienmaara)){
+                voitot = voitot + "12";
+            }
+            voitot = voitot + varijasuora(kortit, korttienmaara);
+            if(tays4kasi(kortit, korttienmaara)){
+                voitot = voitot + "5";
+            }
+            if(neloset4(kortit, korttienmaara)){
+                voitot = voitot + "6";
+            }
+            if(vitoset(kortit, korttienmaara)){
+                voitot = voitot + "8";
+            }
+            labelVari(voitot);
+            
+        }
+        else if(korttienmaara == 5){
+            voitot = LukitseVoitot(kasi);
+            voitot = Character.toString(voitot.charAt(0));
+            labelVari(voitot);
+        }
+    }
+    
+    /*
+    ----------------------------------------------------------------------------
+    ----------------Potentiaalisten voittojen metodit---------------------------
+    ----------------------------------------------------------------------------
+    */
+    
+    private static boolean vitoset(Integer[][] kortit,int korttienmaara){
+        for(int i = 0;i < (korttienmaara - 1);i++){
+            if(!kortit[i][0].equals(kortit[i+1][0])){
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    private static String varijasuora(Integer[][] kortit,int korttienmaara){
+        String voitot = "";
+        boolean vari = true;
+        boolean suora = false;
+        for(int i = 0;i < (korttienmaara - 1);i++){
+            if(!kortit[i][1].equals(kortit[i+1][1])){
+                vari = false;
+                break;
+            }
+        }
+        if(kortit[korttienmaara - 1][0] - kortit[0][0] < 5 || kortit[0][0] == 1 && (14 - kortit[1][0]) < 5){
+            suora = !onkopari(kortit,korttienmaara);
+        }
+        if(suora){
+            voitot = voitot + "3";
+        }
+        if(vari){
+            voitot = voitot + "4";
+        }
+        if(vari && suora){
+            voitot = voitot + "7";
+        }
+        return voitot;
+    }
+    private static boolean onkopari(Integer[][] kortit,int korttienmaara){
+        for(int i = 0;i < (korttienmaara - 1);i++){
+            if(kortit[i][0].equals(kortit[i+1][0])){
+                return true;
+            }
+        }
+        return false;
+    }
+    private static boolean tays4kasi(Integer[][] kortit,int korttienmaara){
+        for(int i = 0;i < korttienmaara - 2;i++){
+            if(kortit[i][0].intValue() == kortit[i+1][0] && kortit[i][0].intValue() == kortit[i+2][0]){
+                return true;
+            }
+        }
+        return kortit[1][0].intValue() == kortit[2][0] && kortit[3][0].intValue() == kortit[4][0];
+    }
+    private static boolean neloset4(Integer[][] kortit,int korttienmaara){
+        for(int i = 0;i < korttienmaara - 2;i++){
+            if(kortit[i][0].intValue() == kortit[i+1][0] && kortit[i][0].intValue() == kortit[i+2][0]){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public static void labelVari(String kadet){
+        ArrayList<JLabel> nimet = new ArrayList<>();
+        nimet.add(Gui_Main.jLabel8);
+        nimet.add(Gui_Main.jLabel9);
+        nimet.add(Gui_Main.jLabel10);
+        nimet.add(Gui_Main.jLabel11);
+        nimet.add(Gui_Main.jLabel12);
+        nimet.add(Gui_Main.jLabel13);
+        nimet.add(Gui_Main.jLabel14);
+        nimet.add(Gui_Main.jLabel15);
+        
+        for(JLabel label:nimet){
+            label.setBackground(Color.LIGHT_GRAY);
+        }
+        for(int index = 0;index < kadet.length();index++){
+            switch (kadet.charAt(index)){
+                case '1': nimet.get(7).setBackground(Color.yellow);
+                          break;
+                case '2': nimet.get(6).setBackground(Color.yellow);
+                          break;
+                case '3': nimet.get(5).setBackground(Color.yellow);
+                          break;
+                case '4': nimet.get(4).setBackground(Color.yellow);
+                          break;
+                case '5': nimet.get(3).setBackground(Color.yellow);
+                          break;
+                case '6': nimet.get(2).setBackground(Color.yellow);
+                          break;
+                case '7': nimet.get(1).setBackground(Color.yellow);
+                          break;
+                case '8': nimet.get(0).setBackground(Color.yellow);
+                          break;
+            }
         }
     }
     
