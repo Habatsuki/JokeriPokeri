@@ -272,42 +272,42 @@ public class Gui_Main extends JFrame {
 
         jLabel8.setBorder(BorderFactory.createSoftBevelBorder(WIDTH, Color.black, Color.white, Color.black, Color.white));
         jLabel8.setForeground(Color.black);
-        jLabel8.setBackground(Color.lightGray);
+        jLabel8.setBackground(Color.yellow);
 
         jLabel9.setOpaque(true);
         jLabel9.setBorder(BorderFactory.createSoftBevelBorder(WIDTH, Color.black, Color.white, Color.black, Color.white));
         jLabel9.setForeground(Color.black);
-        jLabel9.setBackground(Color.lightGray);
+        jLabel9.setBackground(Color.yellow);
 
         jLabel10.setOpaque(true);
         jLabel10.setBorder(BorderFactory.createSoftBevelBorder(WIDTH, Color.black, Color.white, Color.black, Color.white));
         jLabel10.setForeground(Color.black);
-        jLabel10.setBackground(Color.lightGray);
+        jLabel10.setBackground(Color.yellow);
 
         jLabel11.setOpaque(true);
         jLabel11.setBorder(BorderFactory.createSoftBevelBorder(WIDTH, Color.black, Color.white, Color.black, Color.white));
         jLabel11.setForeground(Color.black);
-        jLabel11.setBackground(Color.lightGray);
+        jLabel11.setBackground(Color.yellow);
 
         jLabel12.setOpaque(true);
         jLabel12.setBorder(BorderFactory.createSoftBevelBorder(WIDTH, Color.black, Color.white, Color.black, Color.white));
         jLabel12.setForeground(Color.black);
-        jLabel12.setBackground(Color.lightGray);
+        jLabel12.setBackground(Color.yellow);
 
         jLabel13.setOpaque(true);
         jLabel13.setBorder(BorderFactory.createSoftBevelBorder(WIDTH, Color.black, Color.white, Color.black, Color.white));
         jLabel13.setForeground(Color.black);
-        jLabel13.setBackground(Color.lightGray);
+        jLabel13.setBackground(Color.yellow);
 
         jLabel14.setOpaque(true);
         jLabel14.setBorder(BorderFactory.createSoftBevelBorder(WIDTH, Color.black, Color.white, Color.black, Color.white));
         jLabel14.setForeground(Color.black);
-        jLabel14.setBackground(Color.lightGray);
+        jLabel14.setBackground(Color.yellow);
 
         jLabel15.setOpaque(true);
         jLabel15.setBorder(BorderFactory.createSoftBevelBorder(WIDTH, Color.black, Color.white, Color.black, Color.white));
         jLabel15.setForeground(Color.black);
-        jLabel15.setBackground(Color.lightGray);
+        jLabel15.setBackground(Color.yellow);
 
         jLabel19.setVisible(true);
         jLabel20.setVisible(true);
@@ -583,14 +583,14 @@ public class Gui_Main extends JFrame {
                 //KorttiKasittely.SiirraKaikkiKortitPakkaan(kortitPakka, kortitKasi, kortitMuu);
                 if (rayPelikone.getiPelivaihe() == 1) {
                     jLabel24.setText("Lukitse haluamasi kortit, ja Jaa");
-                    jLabel8.setBackground(Color.lightGray);
-                    jLabel9.setBackground(Color.lightGray);
-                    jLabel10.setBackground(Color.lightGray);
-                    jLabel11.setBackground(Color.lightGray);
-                    jLabel12.setBackground(Color.lightGray);
-                    jLabel13.setBackground(Color.lightGray);
-                    jLabel14.setBackground(Color.lightGray);
-                    jLabel15.setBackground(Color.lightGray);
+                    jLabel8.setBackground(Color.yellow);
+                    jLabel9.setBackground(Color.yellow);
+                    jLabel10.setBackground(Color.yellow);
+                    jLabel11.setBackground(Color.yellow);
+                    jLabel12.setBackground(Color.yellow);
+                    jLabel13.setBackground(Color.yellow);
+                    jLabel14.setBackground(Color.yellow);
+                    jLabel15.setBackground(Color.yellow);
 
                     try {
                         AudioInputStream bgm = AudioSystem.getAudioInputStream(new File("src/sound/jaa_1.wav"));
@@ -1086,4 +1086,3 @@ public class Gui_Main extends JFrame {
 
     //</editor-fold>
 }
-
