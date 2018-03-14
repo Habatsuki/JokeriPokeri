@@ -148,8 +148,18 @@ public class Pelikone {
         String sRahamaara = String.format("%.2f", this.dRahamaara);
         
         Gui_Main.jLabel8.setText(String.format("%.2f", this.dPanos * 50) + " € Viitoset");
-        Gui_Main.jLabel9.setText(String.format("%.2f", this.dPanos * 30) + " € Värisuora");
-        Gui_Main.jLabel10.setText(String.format("%.2f", this.dPanos * 15) + " € Neloset");
+//        Gui_Main.jLabel9.setText(String.format("    "+"%.2f", this.dPanos * 30) + " € Värisuora");
+        if ((this.dPanos * 30) < 10) {
+            Gui_Main.jLabel9.setText(String.format("    " + "%.2f", this.dPanos * 30) + "   € Värisuora");
+        } else {
+            Gui_Main.jLabel9.setText(String.format("    " + "%.2f", this.dPanos * 30) + " € Värisuora");
+        }
+//        Gui_Main.jLabel10.setText(String.format("    "+"%.2f", this.dPanos * 15) + " € Neloset");
+        if ((this.dPanos * 15) < 10) {
+            Gui_Main.jLabel10.setText(String.format("    " + "%.2f", this.dPanos * 15) + "   € Neloset");
+        } else {
+            Gui_Main.jLabel10.setText(String.format("    " + "%.2f", this.dPanos * 15) + " € Neloset");
+        }
         Gui_Main.jLabel11.setText(String.format("%.2f", this.dPanos * 8) + " € Täyskäsi");
         Gui_Main.jLabel12.setText(String.format("%.2f", this.dPanos * 4) + " € Väri");
         Gui_Main.jLabel13.setText(String.format("%.2f", this.dPanos * 3) + " € Suora");
