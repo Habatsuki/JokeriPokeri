@@ -1,5 +1,6 @@
 package oliot_projekti;
 
+import java.util.ArrayList;
 import java.awt.Image;
 import javax.swing.*;
 
@@ -79,11 +80,13 @@ public class Funktiot {
 //        jLabel_Temp.setIcon(kortinKuva);
 //    }
     //Kortin lukitseminen/lukituksen vaihtaminen
-    public static void KorttiVaihdaLukitusta(javax.swing.JCheckBox jCheckbox_Temp) {
+    public static void KorttiVaihdaLukitusta(javax.swing.JCheckBox jCheckbox_Temp, ArrayList<Kortti> kasi) {
         if (jCheckbox_Temp.isSelected()) {
             jCheckbox_Temp.setSelected(false);
+            VoitonTarkistus.Potentiaaliset(kasi);
         } else {
             jCheckbox_Temp.setSelected(true);
+            VoitonTarkistus.Potentiaaliset(kasi);
         };
     }
     //Kortin lukituksen asemmatinen halutuksi
