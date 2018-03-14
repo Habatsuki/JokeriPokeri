@@ -1,6 +1,13 @@
 package oliot_projekti;
+import javax.sound.sampled.Clip;
+import static jokeripokeri.Gui_Main.jazz;
 import static jokeripokeri.Gui_Main.tuplaus;
 
+/**
+ *
+ * @author Jari
+ */
+//Peliautomaatti (Olio)
 //Peliautomaatti (Olio)
 public class Pelikone {
     //Panos
@@ -94,15 +101,21 @@ public class Pelikone {
     }
     public void setiPelivaihe(int iAsetaVaihe) {
         this.iPelivaihe = iAsetaVaihe;
-        
-        //Tarkista onko pelikoneessa rahaa
+                //Tarkista onko pelikoneessa rahaa
         if (this.iPelivaihe == 1 && this.dRahamaara <= 0) {
+            this.iPelivaihe = 6;
+        }
+        //Tarkista onko pelikoneessa rahaa
+        if (this.dRahamaara <= 0) {
             this.iPelivaihe = 6;
         }
         
         //Aseta painikkeet lukituiksi
         if (this.iPelivaihe == 1) {
             tuplaus.stop();
+            jazz.start();
+            jazz.loop(Clip.LOOP_CONTINUOUSLY);
+
 
             //Jos rahat eivät riitä panokseen aseta panos rahamäärän suuruiseksi
             if (this.dRahamaara < this.dPanos) {
@@ -118,6 +131,7 @@ public class Pelikone {
 
         } else if (this.iPelivaihe == 4) {
             tuplaus.start();
+            jazz.stop();
             //Gui_Main.AsetaOhjeteksti("Valitse suuri tai pieni");
         } else if (this.iPelivaihe == 5) {
 
