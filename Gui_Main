@@ -1,7 +1,5 @@
 package oliot_projekti;
 
-package jokeripokeri;
-
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
@@ -36,53 +34,33 @@ public class Gui_Main extends JFrame {
         //<editor-fold defaultstate="collapsed" desc="Labelien ja painikkeiden sanakirja">
         /**
          *
-         * jButton1; Voitonmaksu 
-         * jButton2; Tuplaa 
-         * jButton3; Panos 
-         * jButton4; Jaa
-         * jButton5; Suuri (tuplaus) 
-         * jButton6; Pieni (tuplaus)
+         * jButton1; Voitonmaksu jButton2; Tuplaa jButton3; Panos jButton4; Jaa
+         * jButton5; Suuri (tuplaus) jButton6; Pieni (tuplaus)
          *
-         * jCheckBox1; 
-         * jCheckBox2; 
-         * jCheckBox3; 
-         * jCheckBox4; 
-         * jCheckBox5;
+         * jCheckBox1; jCheckBox2; jCheckBox3; jCheckBox4; jCheckBox5;
          *
-         * jLabel1; Kortti 1 
-         * jLabel2; Kortti 2 
-         * jLabel3; Kortti 3 
-         * jLabel4; Kortti 4 
-         * jLabel5; Kortti 5
+         * jLabel1; Kortti 1 jLabel2; Kortti 2 jLabel3; Kortti 3 jLabel4; Kortti
+         * 4 jLabel5; Kortti 5
          *
-         * jLabel6; Tili: (teksti) 
-         * jLabel7; Voitot: (teksti)
-         * jLabel8; Värisuora 
-         * jLabel9; Viitoset 
-         * jLabel10; Neloset 
-         * jLabel11;Täyskäsi 
-         * jLabel12; Väri 
-         * jLabel13; Suora 
-         * jLabel14; Kolmoset
-         * jLabel15;Kaksi Paria
+         * jLabel6; Tili: (teksti) jLabel7; Voitot: (teksti) jLabel8; Värisuora
+         * jLabel9; Viitoset jLabel10; Neloset jLabel11;Täyskäsi jLabel12; Väri
+         * jLabel13; Suora jLabel14; Kolmoset jLabel15;Kaksi Paria
          *
-         * jLabel16; Voitot (Rahamaara) 
-         * jLabel17; Tili (Rahamaara)
+         * jLabel16; Voitot (Rahamaara) jLabel17; Tili (Rahamaara)
          * jLabel18;Panos (Rahamaara)
          *
-         * jLabel19; LUKITTU/EI LUKITTU 1 
-         * jLabel20; LUKITTU/EI LUKITTU 2
-         * jLabel21; LUKITTU/EI LUKITTU 3 
-         * jLabel22; LUKITTU/EI LUKITTU 4
+         * jLabel19; LUKITTU/EI LUKITTU 1 jLabel20; LUKITTU/EI LUKITTU 2
+         * jLabel21; LUKITTU/EI LUKITTU 3 jLabel22; LUKITTU/EI LUKITTU 4
          * jLabel23; LUKITTU/EI LUKITTU 5
          *
-         * jPanel1; Korttien tausta (White) 
-         * jPanel2; Painikkeiden tausta
+         * jPanel1; Korttien tausta (White) jPanel2; Painikkeiden tausta
          * (light_grey)
          */
 //</editor-fold>
         jPanel1 = new JPanel();
         jPanel2 = new JPanel();
+        jPanel2.setSize(1250, 350);
+//        jPanel2.setBackground(Color.DARK_GRAY);
 
         jLabel1 = new JLabel();
         jLabel1 = new JLabel();
@@ -289,45 +267,51 @@ public class Gui_Main extends JFrame {
 
         jLabel7.setText("Voitot:");
 
-        jLabel9.setText("50x Viitoset");
+//        jLabel8.setText("30x Värisuora");
+        jLabel8.setOpaque(true);
+        jLabel8.setFont(new Font("Helvetica", Font.BOLD, 12));
+
+        jLabel8.setBorder(BorderFactory.createSoftBevelBorder(WIDTH, Color.black, Color.white, Color.black, Color.white));
+        jLabel8.setForeground(Color.black);
+        jLabel8.setBackground(Color.lightGray);
+
+//        jLabel9.setText("50x Viitoset");
         jLabel9.setOpaque(true);
         jLabel9.setBorder(BorderFactory.createSoftBevelBorder(WIDTH, Color.black, Color.white, Color.black, Color.white));
         jLabel9.setForeground(Color.black);
-//        jLabel9.setBackground(Color.lightGray);
         jLabel9.setBackground(Color.lightGray);
 
-        jLabel8.setText("30x Värisuora");
-        jLabel8.setOpaque(true);
-        jLabel8.setBorder(BorderFactory.createSoftBevelBorder(WIDTH, Color.black, Color.white, Color.black, Color.white));
-        jLabel8.setForeground(Color.black);
-//        jLabel9.setBackground(Color.lightGray);
-        jLabel8.setBackground(Color.yellow);
-        jLabel10.setText("15x Neloset");
+//        jLabel10.setText("15x Neloset");
         jLabel10.setOpaque(true);
         jLabel10.setBorder(BorderFactory.createSoftBevelBorder(WIDTH, Color.black, Color.white, Color.black, Color.white));
         jLabel10.setForeground(Color.black);
-        jLabel10.setBackground(Color.yellow);
-        jLabel11.setText("8x Täyskäsi");
+        jLabel10.setBackground(Color.lightGray);
+
+//        jLabel11.setText("8x Täyskäsi");
         jLabel11.setOpaque(true);
         jLabel11.setBorder(BorderFactory.createSoftBevelBorder(WIDTH, Color.black, Color.white, Color.black, Color.white));
         jLabel11.setForeground(Color.black);
         jLabel11.setBackground(Color.lightGray);
-        jLabel12.setText("4x Väri");
+
+//        jLabel12.setText("4x Väri");
         jLabel12.setOpaque(true);
         jLabel12.setBorder(BorderFactory.createSoftBevelBorder(WIDTH, Color.black, Color.white, Color.black, Color.white));
         jLabel12.setForeground(Color.black);
-        jLabel12.setBackground(Color.yellow);
-        jLabel13.setText("3x Suora");
+        jLabel12.setBackground(Color.lightGray);
+
+//        jLabel13.setText("3x Suora");
         jLabel13.setOpaque(true);
         jLabel13.setBorder(BorderFactory.createSoftBevelBorder(WIDTH, Color.black, Color.white, Color.black, Color.white));
         jLabel13.setForeground(Color.black);
         jLabel13.setBackground(Color.lightGray);
-        jLabel14.setText("2x Kolmoset");
+
+//        jLabel14.setText("2x Kolmoset");
         jLabel14.setOpaque(true);
         jLabel14.setBorder(BorderFactory.createSoftBevelBorder(WIDTH, Color.black, Color.white, Color.black, Color.white));
         jLabel14.setForeground(Color.black);
-        jLabel14.setBackground(Color.yellow);
-        jLabel15.setText("2x Kaksi Paria");
+        jLabel14.setBackground(Color.lightGray);
+
+//        jLabel15.setText("2x Kaksi Paria");
         jLabel15.setOpaque(true);
         jLabel15.setBorder(BorderFactory.createSoftBevelBorder(WIDTH, Color.black, Color.white, Color.black, Color.white));
         jLabel15.setForeground(Color.black);
@@ -419,7 +403,6 @@ public class Gui_Main extends JFrame {
 
         jButton1.setBackground(new java.awt.Color(255, 255, 153));
         jButton1.setText("Voitonmaksu");
-        jButton1.setPreferredSize(new java.awt.Dimension(100, 50));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -650,7 +633,6 @@ public class Gui_Main extends JFrame {
                         if (iVoitto != 0) {
                             //Jos voitto niin
                             jLabel24.setText("Voitit! Valitse Tuplaa tai Voitonmaksu");
-
                             System.out.println("Voitit " + iVoitto + " €");
                             //Jatka vaiheeseen [3.]
                             rayPelikone.setiPelivaihe(3);
@@ -782,15 +764,15 @@ public class Gui_Main extends JFrame {
         jPanel1Layout.setHorizontalGroup(
                 jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(36)
+                                .addGap(23)
                                 .addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 222, GroupLayout.PREFERRED_SIZE)
-                                .addGap(15, 15, 15)
+                                .addGap(22, 22, 22)
                                 .addComponent(jLabel2, GroupLayout.PREFERRED_SIZE, 222, GroupLayout.PREFERRED_SIZE)
-                                .addGap(15, 15, 15)
+                                .addGap(22, 22, 22)
                                 .addComponent(jLabel3, GroupLayout.PREFERRED_SIZE, 222, GroupLayout.PREFERRED_SIZE)
-                                .addGap(15, 15, 15)
+                                .addGap(22, 22, 22)
                                 .addComponent(jLabel4, GroupLayout.PREFERRED_SIZE, 222, GroupLayout.PREFERRED_SIZE)
-                                .addGap(15, 15, 15)
+                                .addGap(22, 22, 22)
                                 .addComponent(jLabel5, GroupLayout.PREFERRED_SIZE, 222, GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -832,11 +814,11 @@ public class Gui_Main extends JFrame {
                                                         .addComponent(jCheckBox3)
                                                         .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                                                 .addComponent(jLabel16, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                .addComponent(jLabel17, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE))))
+                                                                .addComponent(jLabel17, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE))))
                                         .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addGap(79, 79, 79)
+                                                .addGap(82, 82, 82)
                                                 .addComponent(jLabel19, GroupLayout.PREFERRED_SIZE, 87, GroupLayout.PREFERRED_SIZE)
-                                                .addGap(151, 151, 151)
+                                                .addGap(170, 170, 170)
                                                 .addComponent(jLabel20)))
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED, 14, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
@@ -844,7 +826,7 @@ public class Gui_Main extends JFrame {
                                                 .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                         .addGroup(jPanel2Layout.createSequentialGroup()
                                                                 .addComponent(jCheckBox4)
-                                                                .addGap(180, 180, 180))
+                                                                .addGap(160, 160, 160))
                                                         .addGroup(GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                                                 .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                                                                         .addComponent(jLabel21)
@@ -854,16 +836,17 @@ public class Gui_Main extends JFrame {
                                                                                 .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                                                                         .addComponent(jButton5, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
                                                                                         .addComponent(jButton6, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE))))
-                                                                .addGap(32, 32, 32)))
+                                                                .addGap(6, 6, 6)))
                                                 .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                         .addComponent(jCheckBox5)
                                                         .addGroup(jPanel2Layout.createSequentialGroup()
                                                                 .addComponent(jButton3, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
                                                                 .addGap(5, 5, 5)
-                                                                .addComponent(jLabel18, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(jLabel18, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
                                                                 .addGap(33, 33, 33)
                                                                 .addComponent(jButton4, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)))
-                                                .addGap(54, 54, 54)
+                                                //button 4 jälkeen
+                                                .addGap(64, 64, 64)
                                                 .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                         .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                                 .addComponent(jLabel9, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
@@ -878,7 +861,7 @@ public class Gui_Main extends JFrame {
                                                 .addComponent(jLabel22)
                                                 .addGap(181, 181, 181)
                                                 .addComponent(jLabel23)
-                                                .addGap(91, 91, 91))))
+                                                .addGap(75, 75, 75))))
                         .addGap(28, 28, 28)
                         .addComponent(jLabel24)
                         .addGap(46, 46, 46)
@@ -994,12 +977,12 @@ public class Gui_Main extends JFrame {
     public static void main(String args[]) {
 
         try {
-            aloitus = AudioSystem.getClip();
-            aloitus.open(AudioSystem.getAudioInputStream(new File("src/sound/click_2.wav")));
-            FloatControl gainControl
-                    = (FloatControl) aloitus.getControl(FloatControl.Type.MASTER_GAIN);
-            gainControl.setValue(-80.0f);
-            aloitus.start();
+//            aloitus = AudioSystem.getClip();
+//            aloitus.open(AudioSystem.getAudioInputStream(new File("src/sound/click_2.wav")));
+//            FloatControl gainControl
+//                    = (FloatControl) aloitus.getControl(FloatControl.Type.MASTER_GAIN);
+//            gainControl.setValue(-80.0f);
+//            aloitus.start();
 
             tuplaus = AudioSystem.getClip();
             tuplaus.open(AudioSystem.getAudioInputStream(new File("src/sound/popcorn.wav")));
@@ -1018,20 +1001,20 @@ public class Gui_Main extends JFrame {
 
             sfx2 = AudioSystem.getClip();
             sfx2.open(AudioSystem.getAudioInputStream(new File("src/sound/click_lock.wav")));
-            
+
             jazz = AudioSystem.getClip();
             jazz.open(AudioSystem.getAudioInputStream(new File("src/sound/jazz.wav")));
+            FloatControl gainControl
+                    = (FloatControl) jazz.getControl(FloatControl.Type.MASTER_GAIN);
+            gainControl.setValue(-10.0f);
             jazz.start();
             jazz.loop(Clip.LOOP_CONTINUOUSLY);
-
-//            bell = AudioSystem.getClip();
-//            bell.open(AudioSystem.getAudioInputStream(new File("src/sound/bell.wav")));
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-//                    AudioInputStream bgm = AudioSystem.getAudioInputStream(new File("src/sound/voitonmaksu.wav"));
+//            AudioInputStream bgm = AudioSystem.getAudioInputStream(new File("src/sound/voitonmaksu.wav"));
 //            clip = AudioSystem.getClip();
 //            clip.open(bgm);
 //            FloatControl gainControl
@@ -1098,7 +1081,6 @@ public class Gui_Main extends JFrame {
     public static Clip jazz;
 //    public static Clip sfx;
 
-    
     //</editor-fold>
 }
 
